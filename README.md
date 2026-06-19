@@ -15,17 +15,8 @@ binary first:
 curl -fsSL https://yulang.momota.pw/install.sh | sh -s -- --version v0.1.0-alpha.1
 ```
 
-On Windows PowerShell:
-
-```powershell
-irm https://yulang.momota.pw/install.ps1 -OutFile install.ps1
-powershell -ExecutionPolicy Bypass -File .\install.ps1 -Version v0.1.0-alpha.1
-```
-
-The extension searches the active worktree environment, `~/.yulang/bin`, and
-`~/.cargo/bin`, then invokes `yulang server`. It rejects Unix-style fallback
-paths such as `/home/me/.cargo/bin/yulang` when running in Windows-local Zed.
-It does not bundle a language server binary yet.
+The extension searches the active worktree environment, then invokes
+`yulang server`. It does not bundle a language server binary yet.
 
 You can override the command from Zed settings:
 
@@ -41,14 +32,6 @@ You can override the command from Zed settings:
   }
 }
 ```
-
-Remove older `lsp.yulang-lsp` overrides when upgrading from extension versions
-`0.0.8` or earlier. Current settings should use `lsp.yulang`.
-
-For WSL, open the project through Zed Remote instead of launching `wsl.exe`
-from the extension. The language server will then run inside the WSL worktree
-and use the WSL-side `PATH`. Put binary path overrides in the remote server
-settings or the project `.zed/settings.json`.
 
 ## Semantic Highlighting
 
